@@ -1,10 +1,463 @@
 {
-  "location": {"name":"Horta, Barcelona","postal_code":"08031","latitude":41.43,"longitude":2.159,"timezone":"Europe/Madrid"},
-  "generated_at": null,
+  "location": {
+    "name": "Horta, Barcelona",
+    "postal_code": "08031",
+    "latitude": 41.43,
+    "longitude": 2.159,
+    "timezone": "Europe/Madrid"
+  },
+  "generated_at": "2026-11-17T09:22:41.580196+01:00",
   "sections": {
-    "weather":{"status":"pending","data":null,"error":null},
-    "alerts":{"status":"pending","data":null,"error":null},
-    "bicing":{"status":"pending","data":null,"error":null},
-    "electricity":{"status":"pending","data":null,"error":null}
+    "weather": {
+      "status": "ok",
+      "data": {
+        "latitude": 41.43923,
+        "longitude": 2.168546,
+        "generationtime_ms": 0.23186206817626953,
+        "utc_offset_seconds": 3600,
+        "timezone": "Europe/Madrid",
+        "timezone_abbreviation": "GMT+1",
+        "elevation": 90.0,
+        "current_units": {
+          "time": "iso8601",
+          "interval": "seconds",
+          "temperature_2m": "°C",
+          "relative_humidity_2m": "%",
+          "apparent_temperature": "°C",
+          "weather_code": "wmo code",
+          "wind_speed_10m": "km/h",
+          "wind_gusts_10m": "km/h"
+        },
+        "current": {
+          "time": "2026-11-17T09:15",
+          "interval": 900,
+          "temperature_2m": 17.5,
+          "relative_humidity_2m": 53,
+          "apparent_temperature": 15.0,
+          "weather_code": 3,
+          "wind_speed_10m": 13.8,
+          "wind_gusts_10m": 37.1
+        },
+        "hourly_units": {
+          "time": "iso8601",
+          "temperature_2m": "°C",
+          "precipitation_probability": "%",
+          "precipitation": "mm",
+          "weather_code": "wmo code",
+          "wind_speed_10m": "km/h"
+        },
+        "hourly": {
+          "time": [
+            "2026-11-17T00:00",
+            "2026-11-17T01:00",
+            "2026-11-17T02:00",
+            "2026-11-17T03:00",
+            "2026-11-17T04:00",
+            "2026-11-17T05:00",
+            "2026-11-17T06:00",
+            "2026-11-17T07:00",
+            "2026-11-17T08:00",
+            "2026-11-17T09:00",
+            "2026-11-17T10:00",
+            "2026-11-17T11:00",
+            "2026-11-17T12:00",
+            "2026-11-17T13:00",
+            "2026-11-17T14:00",
+            "2026-11-17T15:00",
+            "2026-11-17T16:00",
+            "2026-11-17T17:00",
+            "2026-11-17T18:00",
+            "2026-11-17T19:00",
+            "2026-11-17T20:00",
+            "2026-11-17T21:00",
+            "2026-11-17T22:00",
+            "2026-11-17T23:00"
+          ],
+          "temperature_2m": [
+            16.3,
+            16.3,
+            16.4,
+            16.3,
+            16.0,
+            16.1,
+            16.3,
+            16.5,
+            16.6,
+            17.3,
+            18.1,
+            18.9,
+            19.4,
+            19.8,
+            20.2,
+            20.1,
+            20.3,
+            19.8,
+            19.2,
+            18.9,
+            18.9,
+            18.9,
+            18.8,
+            19.0
+          ],
+          "precipitation_probability": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0
+          ],
+          "precipitation": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "weather_code": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "wind_speed_10m": [
+            7.9,
+            8.3,
+            10.1,
+            11.9,
+            12.7,
+            13.1,
+            13.8,
+            13.4,
+            13.4,
+            13.4,
+            15.0,
+            17.2,
+            18.7,
+            18.7,
+            18.7,
+            17.3,
+            14.3,
+            9.8,
+            8.9,
+            7.9,
+            9.0,
+            11.3,
+            10.8,
+            9.4
+          ]
+        },
+        "daily_units": {
+          "time": "iso8601",
+          "weather_code": "wmo code",
+          "temperature_2m_max": "°C",
+          "temperature_2m_min": "°C",
+          "precipitation_sum": "mm",
+          "precipitation_probability_max": "%",
+          "wind_speed_10m_max": "km/h",
+          "wind_gusts_10m_max": "km/h"
+        },
+        "daily": {
+          "time": [
+            "2026-11-17"
+          ],
+          "weather_code": [
+            3
+          ],
+          "temperature_2m_max": [
+            20.3
+          ],
+          "temperature_2m_min": [
+            16.0
+          ],
+          "precipitation_sum": [
+            0.0
+          ],
+          "precipitation_probability_max": [
+            5
+          ],
+          "wind_speed_10m_max": [
+            18.7
+          ],
+          "wind_gusts_10m_max": [
+            46.8
+          ]
+        }
+      },
+      "error": null
+    },
+    "alerts": {
+      "status": "error",
+      "data": null,
+      "error": "Falta la variable METEOCAT_API_KEY"
+    },
+    "bicing": {
+      "status": "ok",
+      "data": {
+        "stations": [
+          {
+            "id": "b8309ba8c11cf5b338d6bcbb4867edfa",
+            "name": "C/ LISBOA, 1",
+            "distance": 0.04978206381271066,
+            "latitude": 41.429554,
+            "longitude": 2.158948,
+            "bikes": 11,
+            "docks": 17,
+            "installed": true,
+            "renting": true,
+            "returning": true
+          },
+          {
+            "id": "a512a25dc72978e08e197d1f2f20ae5b",
+            "name": "C/ PORTO, 35 | AV. ESTATUT DE CATALUNYA",
+            "distance": 0.22275390465225847,
+            "latitude": 41.43061,
+            "longitude": 2.156455,
+            "bikes": 10,
+            "docks": 16,
+            "installed": true,
+            "renting": true,
+            "returning": true
+          },
+          {
+            "id": "95caf46aca1e3505945e857b05f84f40",
+            "name": "C/ FULTON, 1",
+            "distance": 0.22744488894232084,
+            "latitude": 41.429723,
+            "longitude": 2.161703,
+            "bikes": 11,
+            "docks": 9,
+            "installed": true,
+            "renting": true,
+            "returning": true
+          },
+          {
+            "id": "6862769769ff575bde387fa0dfe64d91",
+            "name": "C/ GRANOLLERS, 1",
+            "distance": 0.38182392186748443,
+            "latitude": 41.428313,
+            "longitude": 2.162989,
+            "bikes": 6,
+            "docks": 18,
+            "installed": true,
+            "renting": true,
+            "returning": true
+          },
+          {
+            "id": "0f850a848dad56671cf211f1684580b8",
+            "name": "PG. FABRA I PUIG, 385",
+            "distance": 0.4938666444641714,
+            "latitude": 41.433326,
+            "longitude": 2.162926,
+            "bikes": 3,
+            "docks": 23,
+            "installed": true,
+            "renting": true,
+            "returning": true
+          }
+        ],
+        "provider": "CityBikes"
+      },
+      "error": null
+    },
+    "electricity": {
+      "status": "ok",
+      "data": {
+        "date": "2026-11-17",
+        "currency": "EUR",
+        "unit": "kWh",
+        "average_eur_kwh": 0.1750620833333333,
+        "minimum_eur_kwh": 0.07339,
+        "maximum_eur_kwh": 0.27487,
+        "cheapest_hours": [
+          "04:00"
+        ],
+        "most_expensive_hours": [
+          "18:00"
+        ],
+        "hours": [
+          {
+            "time": "2026-11-17T00:00:00+01:00",
+            "hour": "00:00",
+            "price_eur_kwh": 0.16758
+          },
+          {
+            "time": "2026-11-17T01:00:00+01:00",
+            "hour": "01:00",
+            "price_eur_kwh": 0.13362000000000002
+          },
+          {
+            "time": "2026-11-17T02:00:00+01:00",
+            "hour": "02:00",
+            "price_eur_kwh": 0.09923
+          },
+          {
+            "time": "2026-11-17T03:00:00+01:00",
+            "hour": "03:00",
+            "price_eur_kwh": 0.07612999999999999
+          },
+          {
+            "time": "2026-11-17T04:00:00+01:00",
+            "hour": "04:00",
+            "price_eur_kwh": 0.07339
+          },
+          {
+            "time": "2026-11-17T05:00:00+01:00",
+            "hour": "05:00",
+            "price_eur_kwh": 0.07379000000000001
+          },
+          {
+            "time": "2026-11-17T06:00:00+01:00",
+            "hour": "06:00",
+            "price_eur_kwh": 0.09738
+          },
+          {
+            "time": "2026-11-17T07:00:00+01:00",
+            "hour": "07:00",
+            "price_eur_kwh": 0.15707
+          },
+          {
+            "time": "2026-11-17T08:00:00+01:00",
+            "hour": "08:00",
+            "price_eur_kwh": 0.20102
+          },
+          {
+            "time": "2026-11-17T09:00:00+01:00",
+            "hour": "09:00",
+            "price_eur_kwh": 0.1886
+          },
+          {
+            "time": "2026-11-17T10:00:00+01:00",
+            "hour": "10:00",
+            "price_eur_kwh": 0.24059999999999998
+          },
+          {
+            "time": "2026-11-17T11:00:00+01:00",
+            "hour": "11:00",
+            "price_eur_kwh": 0.20387
+          },
+          {
+            "time": "2026-11-17T12:00:00+01:00",
+            "hour": "12:00",
+            "price_eur_kwh": 0.19933
+          },
+          {
+            "time": "2026-11-17T13:00:00+01:00",
+            "hour": "13:00",
+            "price_eur_kwh": 0.19119999999999998
+          },
+          {
+            "time": "2026-11-17T14:00:00+01:00",
+            "hour": "14:00",
+            "price_eur_kwh": 0.14848
+          },
+          {
+            "time": "2026-11-17T15:00:00+01:00",
+            "hour": "15:00",
+            "price_eur_kwh": 0.16581
+          },
+          {
+            "time": "2026-11-17T16:00:00+01:00",
+            "hour": "16:00",
+            "price_eur_kwh": 0.18249
+          },
+          {
+            "time": "2026-11-17T17:00:00+01:00",
+            "hour": "17:00",
+            "price_eur_kwh": 0.20965
+          },
+          {
+            "time": "2026-11-17T18:00:00+01:00",
+            "hour": "18:00",
+            "price_eur_kwh": 0.27487
+          },
+          {
+            "time": "2026-11-17T19:00:00+01:00",
+            "hour": "19:00",
+            "price_eur_kwh": 0.27306
+          },
+          {
+            "time": "2026-11-17T20:00:00+01:00",
+            "hour": "20:00",
+            "price_eur_kwh": 0.27025
+          },
+          {
+            "time": "2026-11-17T21:00:00+01:00",
+            "hour": "21:00",
+            "price_eur_kwh": 0.27312000000000003
+          },
+          {
+            "time": "2026-11-17T22:00:00+01:00",
+            "hour": "22:00",
+            "price_eur_kwh": 0.18213
+          },
+          {
+            "time": "2026-11-17T23:00:00+01:00",
+            "hour": "23:00",
+            "price_eur_kwh": 0.11882
+          }
+        ],
+        "source": "Red Eléctrica (ESIOS)",
+        "note": "Preu del terme d'energia PVPC a la zona peninsular; no inclou impostos ni components fixos."
+      },
+      "error": null
+    }
   }
 }
