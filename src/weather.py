@@ -12,9 +12,9 @@ LONGITUDE = 2.1590
 TIMEZONE = "Europe/Madrid"
 API_URL = "https://api.open-meteo.com/v1/forecast"
 
-TIMEOUT = 30
-MAX_ATTEMPTS = 3
-RETRY_DELAY = 2
+TIMEOUT = 60
+MAX_ATTEMPTS = 5
+RETRY_DELAY = 5
 
 
 def get_weather_data():
@@ -62,7 +62,8 @@ def get_weather_data():
             last_error = error
 
         if attempt < MAX_ATTEMPTS:
-            delay = RETRY_DELAY * attempt
+            # Backoff progressiu per donar marge a incidències temporals de xarxa/TLS.
+            delay = RETRY_DELAY * (2 ** (attempt - 1))
             print(
                 f"Error consultant Open-Meteo "
                 f"(intent {attempt}/{MAX_ATTEMPTS}): {last_error}. "
