@@ -6,14 +6,14 @@
     "longitude": 2.159,
     "timezone": "Europe/Madrid"
   },
-  "generated_at": "2026-11-17T10:15:31.153943+01:00",
+  "generated_at": "2026-11-17T10:17:35.520295+01:00",
   "sections": {
     "weather": {
       "status": "ok",
       "data": {
         "latitude": 41.43923,
         "longitude": 2.168546,
-        "generationtime_ms": 0.33783912658691406,
+        "generationtime_ms": 0.25451183319091797,
         "utc_offset_seconds": 3600,
         "timezone": "Europe/Madrid",
         "timezone_abbreviation": "GMT+1",
