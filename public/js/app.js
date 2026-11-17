@@ -251,7 +251,7 @@ async function fetchDashboard() {
    ===================================================== */
 
 function updateTimestamp(dashboard) {
-  $("updated").textContent = dashboard.generated_at
+  /* $("updated").textContent = dashboard.generated_at
     ? "Actualitzat: " +
       new Date(dashboard.generated_at).toLocaleString(
         "ca-ES",
@@ -260,7 +260,7 @@ function updateTimestamp(dashboard) {
           timeStyle: "short"
         }
       )
-    : "Encara no hi ha dades";
+    : "Encara no hi ha dades"; */
 }
 
 /* =====================================================
