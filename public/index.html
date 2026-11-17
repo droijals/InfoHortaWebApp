@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2b">
+  <meta name="description" content="Informació diària del barri d'Horta, Barcelona 08031.">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Horta 08031</title>
+</head>
+<body>
+  <header class="topbar">
+    <div><p class="eyebrow">INFORMACIÓ LOCAL</p><h1>Horta <span>08031</span></h1><p class="subheading">El teu barri, al dia.</p></div>
+    <div class="header-meta"><span id="updated">Carregant dades…</span><button id="reload" class="secondary" type="button">Recarregar</button></div>
+  </header>
+  <main class="dashboard">
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">AVUI A HORTA</p><h2>Meteorologia</h2></div><span class="icon">☀</span></div><div id="weather" class="panel-content"><p class="muted">Carregant meteorologia…</p></div></section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">PROTECCIÓ CIVIL</p><h2>Avisos Meteocat</h2></div><span class="icon">◈</span></div><div id="alerts" class="panel-content"><p class="muted">Carregant avisos…</p></div></section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">MOBILITAT</p><h2>Bicing proper</h2></div><span class="icon">↗</span></div><div id="bicing" class="panel-content"><p class="muted">Carregant estacions…</p></div></section>
+    <section class="panel"><div class="panel-heading"><div><p class="eyebrow">TARIFA PVPC</p><h2>Preu de la llum</h2></div><span class="icon">ϟ</span></div><div id="electricity" class="panel-content"><p class="muted">Carregant preus…</p></div></section>
+  </main>
+  <footer>HORTA · BARCELONA · 08031 <span>Dades de fonts oficials i proveïdors públics</span></footer>
+  <script src="./js/app.js" defer></script>
+</body>
+</html>
