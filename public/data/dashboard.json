@@ -1,0 +1,10 @@
+{
+  "location": {"name":"Horta, Barcelona","postal_code":"08031","latitude":41.43,"longitude":2.159,"timezone":"Europe/Madrid"},
+  "generated_at": null,
+  "sections": {
+    "weather":{"status":"pending","data":null,"error":null},
+    "alerts":{"status":"pending","data":null,"error":null},
+    "bicing":{"status":"pending","data":null,"error":null},
+    "electricity":{"status":"pending","data":null,"error":null}
+  }
+}
