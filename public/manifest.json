@@ -1,0 +1,10 @@
+{
+  "name": "Horta 08031",
+  "short_name": "Horta 08031",
+  "description": "Informació diària del barri d'Horta, Barcelona.",
+  "lang": "ca",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0c1522",
+  "theme_color": "#101b2b"
+}
