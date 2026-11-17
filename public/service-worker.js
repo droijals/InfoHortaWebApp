@@ -1,4 +1,4 @@
-const CACHE_NAME = "horta-08031-v1";
+const CACHE_NAME = "horta-08031-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -53,18 +53,24 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // Recursos estàtics: memòria cau primer.
+  // Recursos estàtics: xarxa primer per carregar sempre la versió publicada.
+  // Si no hi ha connexió, es recupera la còpia de memòria cau.
   if (APP_SHELL.some(path => new URL(path, self.registration.scope).pathname === url.pathname)) {
     event.respondWith(
-      caches.match(request).then(cached =>
-        cached || fetch(request).then(response => {
-          if (response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
-          }
-          return response;
-        })
-      )
+      fetch(request).then(response => {
+        if (response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+        }
+        return response;
+      }).catch(async () => {
+        const cached = await caches.match(request);
+        if (cached) return cached;
+        return new Response("Recurs no disponible sense connexió", {
+          status: 503,
+          headers: {"Content-Type":"text/plain; charset=utf-8"}
+        });
+      })
     );
   }
 });
