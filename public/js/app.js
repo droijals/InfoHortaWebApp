@@ -267,10 +267,105 @@ function updateTimestamp(dashboard) {
    RECÀRREGA INDIVIDUAL D'UNA SECCIÓ
    ===================================================== */
 
-async function loadSection(sectionName, button) {
-  const content = $(sectionName);
+const BICING_PROVIDERS = [
+  {
+    name: "B:SM",
+    information: "https://api.bsmsa.eu/ext/api/bsm/gbfs/v2/en/station_information",
+    status: "https://api.bsmsa.eu/ext/api/bsm/gbfs/v2/en/station_status"
+  },
+  {
+    name: "CityBikes",
+    information: "https://api.citybik.es/gbfs/2/bicing/station_information.json",
+    status: "https://api.citybik.es/gbfs/2/bicing/station_status.json"
+  }
+];
 
-  if (!renderers[sectionName] || !content) return;
+const BICING_LATITUDE = 41.4300;
+const BICING_LONGITUDE = 2.1590;
+const BICING_STATION_COUNT = 5;
+
+function distanceKm(lat1, lon1, lat2, lon2) {
+  const radians = value => value * Math.PI / 180;
+  const dLat = radians(lat2 - lat1);
+  const dLon = radians(lon2 - lon1);
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(radians(lat1)) * Math.cos(radians(lat2)) *
+    Math.sin(dLon / 2) ** 2;
+  return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+async function fetchJsonNoCache(url) {
+  const response = await fetch(url + (url.includes("?") ? "&" : "?") + "_=" + Date.now(), {
+    cache: "no-store"
+  });
+  if (!response.ok) throw new Error("HTTP " + response.status + " consultant " + url);
+  return response.json();
+}
+
+async function fetchBicingFromProvider(provider) {
+  const [information, status] = await Promise.all([
+    fetchJsonNoCache(provider.information),
+    fetchJsonNoCache(provider.status)
+  ]);
+
+  const infoStations = information.data?.stations || [];
+  const statusStations = status.data?.stations || [];
+  if (!infoStations.length || !statusStations.length) {
+    throw new Error("La resposta no conté les estacions esperades");
+  }
+
+  const statusById = new Map(
+    statusStations.map(station => [String(station.station_id), station])
+  );
+
+  const stations = infoStations.flatMap(station => {
+    const current = statusById.get(String(station.station_id));
+    const lat = Number(station.lat);
+    const lon = Number(station.lon);
+    if (!current || !Number.isFinite(lat) || !Number.isFinite(lon)) return [];
+
+    return [{
+      id: String(station.station_id),
+      name: station.name || station.address || ("Estació " + station.station_id),
+      distance: distanceKm(BICING_LATITUDE, BICING_LONGITUDE, lat, lon),
+      latitude: lat,
+      longitude: lon,
+      bikes: current.num_bikes_available ?? current.num_vehicles_available,
+      docks: current.num_docks_available,
+      installed: current.is_installed,
+      renting: current.is_renting,
+      returning: current.is_returning
+    }];
+  });
+
+  if (!stations.length) throw new Error("No s'han trobat estacions amb estat disponible");
+
+  stations.sort((a, b) => a.distance - b.distance);
+  return {
+    status: "ok",
+    data: {
+      stations: stations.slice(0, BICING_STATION_COUNT),
+      provider: provider.name
+    },
+    error: null
+  };
+}
+
+async function fetchFreshBicing() {
+  const errors = [];
+  for (const provider of BICING_PROVIDERS) {
+    try {
+      return await fetchBicingFromProvider(provider);
+    } catch (error) {
+      errors.push(provider.name + ": " + error.message);
+    }
+  }
+  throw new Error("No s'ha pogut consultar cap font de Bicing. " + errors.join(" | "));
+}
+
+async function loadBicing(button) {
+  const content = $("bicing");
+  if (!content) return;
 
   if (button) {
     button.disabled = true;
@@ -278,21 +373,12 @@ async function loadSection(sectionName, button) {
   }
 
   try {
-    const dashboard = await fetchDashboard();
-
-    const section = dashboard.sections?.[sectionName];
-
-    content.innerHTML = renderers[sectionName](section);
-
-    updateTimestamp(dashboard);
-
+    const section = await fetchFreshBicing();
+    content.innerHTML = renderBicing(section);
   } catch (error) {
     content.innerHTML = `
-      <p class="muted">
-        Error carregant les dades: ${esc(error.message)}
-      </p>
+      <p class="muted">Error actualitzant Bicing: ${esc(error.message)}</p>
     `;
-
   } finally {
     if (button) {
       button.disabled = false;
@@ -354,10 +440,8 @@ async function loadDashboard() {
    ASSOCIACIÓ DELS BOTONS RECARREGAR
    ===================================================== */
 
-document.querySelectorAll(".panel-reload").forEach(button => {
-  button.addEventListener("click", () => {
-    loadSection(button.dataset.section, button);
-  });
+document.querySelectorAll('.panel-reload[data-section="bicing"]').forEach(button => {
+  button.addEventListener("click", () => loadBicing(button));
 });
 
 /* =====================================================
