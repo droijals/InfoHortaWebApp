@@ -251,17 +251,7 @@ async function fetchDashboard() {
    ===================================================== */
 
 function updateTimestamp(dashboard) {
-    $("updated").textContent = dashboard.generated_at
-    ? "Actualitzat" /*
-      new Date(dashboard.generated_at).toLocaleString(
-        "ca-ES",
-        {
-          dateStyle: "medium",
-          timeStyle: "short"
-        }
-      )
-    : "Encara no hi ha dades"; */
-}
+    }
 
 /* =====================================================
    RECÀRREGA INDIVIDUAL D'UNA SECCIÓ
