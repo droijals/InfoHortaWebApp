@@ -1,4 +1,4 @@
-const CACHE_NAME = "horta-08031-v2";
+const CACHE_NAME = "infohorta-v3";
 const APP_SHELL = [
   "./",
   "./index.html",
