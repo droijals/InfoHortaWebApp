@@ -247,13 +247,6 @@ async function fetchDashboard() {
 }
 
 /* =====================================================
-   DATA DE GENERACIÓ
-   ===================================================== */
-
-function updateTimestamp(dashboard) {
-    }
-
-/* =====================================================
    RECÀRREGA INDIVIDUAL D'UNA SECCIÓ
    ===================================================== */
 
@@ -402,10 +395,7 @@ async function loadDashboard() {
       }
     });
 
-    updateTimestamp(dashboard);
-
   } catch (error) {
-    $("updated").textContent = "No s'han pogut carregar les dades";
 
     Object.keys(renderers).forEach(sectionName => {
       const content = $(sectionName);
