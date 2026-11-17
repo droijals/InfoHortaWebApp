@@ -5,6 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101b2b">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Horta 08031">
+  <link rel="apple-touch-icon" sizes="180x180" href="./icons/icon-180.png">
   <meta name="description" content="Informació diària del barri d'Horta, Barcelona 08031.">
 
   <link rel="manifest" href="./manifest.json">
@@ -114,6 +119,15 @@
     <span>Dades de fonts oficials i proveïdors públics</span>
   </footer>
 
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js").catch(error => {
+          console.error("No s\u0027ha pogut registrar el Service Worker:", error);
+        });
+      });
+    }
+  </script>
   <script src="./js/app.js" defer></script>
 
 </body>
