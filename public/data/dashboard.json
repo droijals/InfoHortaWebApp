@@ -6,14 +6,14 @@
     "longitude": 2.159,
     "timezone": "Europe/Madrid"
   },
-  "generated_at": "2026-11-17T09:25:33.707507+01:00",
+  "generated_at": "2026-11-17T09:28:45.149597+01:00",
   "sections": {
     "weather": {
       "status": "ok",
       "data": {
         "latitude": 41.43923,
         "longitude": 2.168546,
-        "generationtime_ms": 0.2576112747192383,
+        "generationtime_ms": 0.24807453155517578,
         "utc_offset_seconds": 3600,
         "timezone": "Europe/Madrid",
         "timezone_abbreviation": "GMT+1",
@@ -258,8 +258,8 @@
             "distance": 0.04978206381271066,
             "latitude": 41.429554,
             "longitude": 2.158948,
-            "bikes": 11,
-            "docks": 17,
+            "bikes": 12,
+            "docks": 16,
             "installed": true,
             "renting": true,
             "returning": true
@@ -294,8 +294,8 @@
             "distance": 0.38182392186748443,
             "latitude": 41.428313,
             "longitude": 2.162989,
-            "bikes": 6,
-            "docks": 18,
+            "bikes": 7,
+            "docks": 17,
             "installed": true,
             "renting": true,
             "returning": true
