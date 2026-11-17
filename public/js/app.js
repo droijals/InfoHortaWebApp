@@ -87,7 +87,7 @@ function renderWeather(section) {
 
     <p class="detail-line">
       Vent ${number(c.wind_speed_10m, 0)} km/h ·
-      Probabilitat de pluja ${number(day.precipitation_probability_max?.[0], 0)}% ·
+      Probab. de pluja ${number(day.precipitation_probability_max?.[0], 0)}% ·
       Pluja prevista ${number(day.precipitation_sum?.[0])} mm
     </p>
   `;
