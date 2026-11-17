@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Horta 08031",
-  "short_name": "Horta",
+  "name": "InfoHorta",
+  "short_name": "InfoHorta",
   "description": "Informació diària del barri d'Horta, Barcelona.",
   "lang": "ca",
   "start_url": "./",
@@ -12,22 +12,10 @@
   "theme_color": "#101b2b",
   "icons": [
     {
-      "src": "./icons/icon-192.png",
+      "src": "./icons/infohorta-icon.jpg",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any"
-    },
-    {
-      "src": "./icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
     }
   ]
 }
