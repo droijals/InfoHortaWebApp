@@ -11,7 +11,7 @@ const esc = value =>
     ">": "&gt;",
     '"': "&quot;",
     "'": "&#39;"
-  }[c]);
+  }[c]));
 
 const failed = section =>
   !section || section.status !== "ok" || section.data == null;
