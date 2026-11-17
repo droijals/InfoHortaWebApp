@@ -251,8 +251,8 @@ async function fetchDashboard() {
    ===================================================== */
 
 function updateTimestamp(dashboard) {
-  /* $("updated").textContent = dashboard.generated_at
-    ? "Actualitzat: " +
+    $("updated").textContent = dashboard.generated_at
+    ? "Actualitzat" /*
       new Date(dashboard.generated_at).toLocaleString(
         "ca-ES",
         {
