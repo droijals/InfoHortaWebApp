@@ -6,7 +6,7 @@
     "longitude": 2.159,
     "timezone": "Europe/Madrid"
   },
-  "generated_at": "2026-11-18T07:46:51.605938+01:00",
+  "generated_at": "2026-11-18T17:22:02.452289+01:00",
   "sections": {
     "alerts": {
       "status": "ok",
@@ -23,8 +23,8 @@
             "distance": 0.04978206381271066,
             "latitude": 41.429554,
             "longitude": 2.158948,
-            "bikes": 21,
-            "docks": 6,
+            "bikes": 22,
+            "docks": 5,
             "installed": true,
             "renting": true,
             "returning": true
@@ -35,8 +35,8 @@
             "distance": 0.22275390465225847,
             "latitude": 41.43061,
             "longitude": 2.156455,
-            "bikes": 8,
-            "docks": 18,
+            "bikes": 11,
+            "docks": 15,
             "installed": true,
             "renting": true,
             "returning": true
@@ -47,8 +47,8 @@
             "distance": 0.22744488894232084,
             "latitude": 41.429723,
             "longitude": 2.161703,
-            "bikes": 11,
-            "docks": 7,
+            "bikes": 9,
+            "docks": 9,
             "installed": true,
             "renting": true,
             "returning": true
@@ -71,8 +71,8 @@
             "distance": 0.4938666444641714,
             "latitude": 41.433326,
             "longitude": 2.162926,
-            "bikes": 14,
-            "docks": 12,
+            "bikes": 4,
+            "docks": 21,
             "installed": true,
             "renting": true,
             "returning": true
