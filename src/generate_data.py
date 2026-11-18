@@ -8,7 +8,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PUBLIC_DATA = BASE_DIR / "public" / "data" / "dashboard.json"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from weather import get_weather_data
 from meteo_alerts import get_meteo_alerts
 from bicing import get_bicing_stations
 from electricity import get_electricity_data
@@ -34,7 +33,6 @@ def main():
                      "latitude": 41.4300, "longitude": 2.1590, "timezone": "Europe/Madrid"},
         "generated_at": datetime.now(TZ).isoformat(),
         "sections": {
-            "weather": collect("meteorologia", get_weather_data),
             "alerts": collect("Meteocat", get_meteo_alerts),
             "bicing": collect("bicing", get_bicing_stations),
             "electricity": collect("electricitat", get_electricity_data),
