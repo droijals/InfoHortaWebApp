@@ -25,72 +25,41 @@ const unavailable = section =>
    METEOROLOGIA
    ===================================================== */
 
-function renderWeather(section) {
-  if (failed(section)) return unavailable(section);
-
-  const d = section.data;
-  const c = d.current || {};
-  const day = d.daily || {};
-
-  const labels = {
-    0: "Cel serè",
-    1: "Principalment serè",
-    2: "Parcialment ennuvolat",
-    3: "Ennuvolat",
-    45: "Boira",
-    48: "Boira gebradora",
-    51: "Plugim feble",
-    53: "Plugim moderat",
-    55: "Plugim intens",
-    61: "Pluja feble",
-    63: "Pluja moderada",
-    65: "Pluja intensa",
-    80: "Ruixats febles",
-    81: "Ruixats moderats",
-    82: "Ruixats forts",
-    95: "Tempesta",
-    96: "Tempesta amb calamarsa",
-    99: "Tempesta intensa"
-  };
-
+function renderWeather(temperature) {
   return `
     <div class="weather-main">
-      <div class="temperature">
-        ${number(c.temperature_2m)}°
-      </div>
-
-      <div class="weather-desc">
-        ${esc(labels[Number(c.weather_code)] || "Condicions variables")}
-        <br>
-        <span class="muted">
-          Sensació ${number(c.apparent_temperature)}°
-        </span>
-      </div>
+      <div class="temperature">${number(temperature)}°C</div>
     </div>
-
-    <div class="metric-grid">
-      <div class="metric">
-        <strong>${number(day.temperature_2m_max?.[0])}°</strong>
-        <small>MÀXIMA</small>
-      </div>
-
-      <div class="metric">
-        <strong>${number(day.temperature_2m_min?.[0])}°</strong>
-        <small>MÍNIMA</small>
-      </div>
-
-      <div class="metric">
-        <strong>${number(c.relative_humidity_2m, 0)}%</strong>
-        <small>HUMITAT</small>
-      </div>
-    </div>
-
-    <p class="detail-line">
-      Vent ${number(c.wind_speed_10m, 0)} km/h ·
-      Probab. de pluja ${number(day.precipitation_probability_max?.[0], 0)}% ·
-      Pluja prevista ${number(day.precipitation_sum?.[0])} mm
-    </p>
   `;
+}
+
+async function loadWeather() {
+  const content = $("weather");
+  if (!content) return;
+
+  try {
+    const url = "https://api.open-meteo.com/v1/forecast?" +
+      new URLSearchParams({
+        latitude: "41.4300",
+        longitude: "2.1590",
+        current: "temperature_2m",
+        temperature_unit: "celsius",
+        timezone: "Europe/Madrid"
+      });
+
+    const data = await fetchJsonNoCache(url);
+    const temperature = Number(data.current?.temperature_2m);
+
+    if (!Number.isFinite(temperature)) {
+      throw new Error("La resposta no inclou la temperatura actual.");
+    }
+
+    content.innerHTML = renderWeather(temperature);
+  } catch (error) {
+    content.innerHTML = `
+      <p class="muted">No s'ha pogut obtenir la temperatura actual: ${esc(error.message)}</p>
+    `;
+  }
 }
 
 /* =====================================================
@@ -221,7 +190,6 @@ function renderElectricity(section) {
    ===================================================== */
 
 const renderers = {
-  weather: renderWeather,
   alerts: renderAlerts,
   bicing: renderBicing,
   electricity: renderElectricity
@@ -429,3 +397,4 @@ document.querySelectorAll('.panel-reload[data-section="bicing"]').forEach(button
    ===================================================== */
 
 loadDashboard();
+loadWeather();
