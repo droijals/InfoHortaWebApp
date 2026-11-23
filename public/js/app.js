@@ -163,8 +163,13 @@ function renderBicing(section) {
       </div>
 
       <div class="count">
-        <strong>${esc(s.bikes ?? "—")}</strong>
-        <small>BICIS</small>
+        <strong>${esc(s.mechanicalBikes ?? "—")}</strong>
+        <small>🚲 MECÀNIQUES</small>
+      </div>
+
+      <div class="count electric-count">
+        <strong>${esc(s.electricBikes ?? "—")}</strong>
+        <small>⚡ ELÈCTRIQUES</small>
       </div>
 
       <div class="count">
@@ -298,6 +303,29 @@ async function fetchJsonNoCache(url) {
   return response.json();
 }
 
+function getBikeTypeCounts(stationStatus) {
+  const total = Number(
+    stationStatus.num_bikes_available ?? stationStatus.num_vehicles_available
+  );
+  const types = stationStatus.vehicle_types_available;
+
+  // Si la font no publica el desglossament, no deduïm el tipus de bicicleta.
+  if (!Array.isArray(types) || !Number.isFinite(total)) {
+    return { mechanical: null, electric: null };
+  }
+
+  const electric = types.reduce((sum, type) => {
+    const typeId = String(type.vehicle_type_id || "").toLowerCase();
+    const isElectric = /electric|ebike|e-bike|e_bike/.test(typeId);
+    return sum + (isElectric ? Number(type.count || 0) : 0);
+  }, 0);
+
+  return {
+    electric,
+    mechanical: Math.max(0, total - electric)
+  };
+}
+
 async function fetchBicingFromProvider(provider) {
   const [information, status] = await Promise.all([
     fetchJsonNoCache(provider.information),
@@ -327,6 +355,8 @@ async function fetchBicingFromProvider(provider) {
       latitude: lat,
       longitude: lon,
       bikes: current.num_bikes_available ?? current.num_vehicles_available,
+      mechanicalBikes: getBikeTypeCounts(current).mechanical,
+      electricBikes: getBikeTypeCounts(current).electric,
       docks: current.num_docks_available,
       installed: current.is_installed,
       renting: current.is_renting,
