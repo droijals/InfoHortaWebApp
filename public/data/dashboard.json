@@ -6,33 +6,11 @@
     "longitude": 2.159,
     "timezone": "Europe/Madrid"
   },
-  "generated_at": "2026-11-22T16:12:12.777029+01:00",
+  "generated_at": "2026-11-23T07:53:50.115143+01:00",
   "sections": {
     "alerts": {
       "status": "ok",
-      "data": [
-        {
-          "meteor": "Vent",
-          "type": "Avís",
-          "start": "2026-11-22T06:00Z",
-          "end": "2026-11-22T23:59Z",
-          "danger": null,
-          "periods": [
-            {
-              "period": "06-12",
-              "danger": 3,
-              "level": 1,
-              "threshold": "Ratxa màxima > 72 km/h (20 m/s)"
-            },
-            {
-              "period": "12-18",
-              "danger": 1,
-              "level": 1,
-              "threshold": "Ratxa màxima > 72 km/h (20 m/s)"
-            }
-          ]
-        }
-      ],
+      "data": [],
       "error": null
     },
     "bicing": {
@@ -46,7 +24,7 @@
             "latitude": 41.429554,
             "longitude": 2.158948,
             "bikes": 16,
-            "docks": 11,
+            "docks": 10,
             "installed": true,
             "renting": true,
             "returning": true
@@ -69,8 +47,8 @@
             "distance": 0.22744488894232084,
             "latitude": 41.429723,
             "longitude": 2.161703,
-            "bikes": 3,
-            "docks": 15,
+            "bikes": 2,
+            "docks": 16,
             "installed": true,
             "renting": true,
             "returning": true
@@ -93,8 +71,8 @@
             "distance": 0.4938666444641714,
             "latitude": 41.433326,
             "longitude": 2.162926,
-            "bikes": 5,
-            "docks": 19,
+            "bikes": 0,
+            "docks": 24,
             "installed": true,
             "renting": true,
             "returning": true
@@ -107,138 +85,138 @@
     "electricity": {
       "status": "ok",
       "data": {
-        "date": "2026-11-22",
+        "date": "2026-11-23",
         "currency": "EUR",
         "unit": "kWh",
-        "average_eur_kwh": 0.14789166666666667,
-        "minimum_eur_kwh": 0.06986,
-        "maximum_eur_kwh": 0.33642,
+        "average_eur_kwh": 0.24721875000000001,
+        "minimum_eur_kwh": 0.15377000000000002,
+        "maximum_eur_kwh": 0.42575,
         "cheapest_hours": [
-          "09:00"
+          "14:00"
         ],
         "most_expensive_hours": [
-          "19:00"
+          "18:00"
         ],
         "hours": [
           {
-            "time": "2026-11-22T00:00:00+01:00",
+            "time": "2026-11-23T00:00:00+01:00",
             "hour": "00:00",
-            "price_eur_kwh": 0.14345
+            "price_eur_kwh": 0.17724
           },
           {
-            "time": "2026-11-22T01:00:00+01:00",
+            "time": "2026-11-23T01:00:00+01:00",
             "hour": "01:00",
-            "price_eur_kwh": 0.11036
+            "price_eur_kwh": 0.17585
           },
           {
-            "time": "2026-11-22T02:00:00+01:00",
+            "time": "2026-11-23T02:00:00+01:00",
             "hour": "02:00",
-            "price_eur_kwh": 0.08496
+            "price_eur_kwh": 0.1758
           },
           {
-            "time": "2026-11-22T03:00:00+01:00",
+            "time": "2026-11-23T03:00:00+01:00",
             "hour": "03:00",
-            "price_eur_kwh": 0.08287
+            "price_eur_kwh": 0.17536000000000002
           },
           {
-            "time": "2026-11-22T04:00:00+01:00",
+            "time": "2026-11-23T04:00:00+01:00",
             "hour": "04:00",
-            "price_eur_kwh": 0.08387
+            "price_eur_kwh": 0.17546
           },
           {
-            "time": "2026-11-22T05:00:00+01:00",
+            "time": "2026-11-23T05:00:00+01:00",
             "hour": "05:00",
-            "price_eur_kwh": 0.08115
+            "price_eur_kwh": 0.17934999999999998
           },
           {
-            "time": "2026-11-22T06:00:00+01:00",
+            "time": "2026-11-23T06:00:00+01:00",
             "hour": "06:00",
-            "price_eur_kwh": 0.08123999999999999
+            "price_eur_kwh": 0.20565
           },
           {
-            "time": "2026-11-22T07:00:00+01:00",
+            "time": "2026-11-23T07:00:00+01:00",
             "hour": "07:00",
-            "price_eur_kwh": 0.08019
+            "price_eur_kwh": 0.29344
           },
           {
-            "time": "2026-11-22T08:00:00+01:00",
+            "time": "2026-11-23T08:00:00+01:00",
             "hour": "08:00",
-            "price_eur_kwh": 0.08644
+            "price_eur_kwh": 0.32205
           },
           {
-            "time": "2026-11-22T09:00:00+01:00",
+            "time": "2026-11-23T09:00:00+01:00",
             "hour": "09:00",
-            "price_eur_kwh": 0.06986
+            "price_eur_kwh": 0.20937
           },
           {
-            "time": "2026-11-22T10:00:00+01:00",
+            "time": "2026-11-23T10:00:00+01:00",
             "hour": "10:00",
-            "price_eur_kwh": 0.07362
+            "price_eur_kwh": 0.23297
           },
           {
-            "time": "2026-11-22T11:00:00+01:00",
+            "time": "2026-11-23T11:00:00+01:00",
             "hour": "11:00",
-            "price_eur_kwh": 0.07204
+            "price_eur_kwh": 0.20824
           },
           {
-            "time": "2026-11-22T12:00:00+01:00",
+            "time": "2026-11-23T12:00:00+01:00",
             "hour": "12:00",
-            "price_eur_kwh": 0.07189
+            "price_eur_kwh": 0.20734
           },
           {
-            "time": "2026-11-22T13:00:00+01:00",
+            "time": "2026-11-23T13:00:00+01:00",
             "hour": "13:00",
-            "price_eur_kwh": 0.07329000000000001
+            "price_eur_kwh": 0.21515
           },
           {
-            "time": "2026-11-22T14:00:00+01:00",
+            "time": "2026-11-23T14:00:00+01:00",
             "hour": "14:00",
-            "price_eur_kwh": 0.07293000000000001
+            "price_eur_kwh": 0.15377000000000002
           },
           {
-            "time": "2026-11-22T15:00:00+01:00",
+            "time": "2026-11-23T15:00:00+01:00",
             "hour": "15:00",
-            "price_eur_kwh": 0.07143000000000001
+            "price_eur_kwh": 0.17314
           },
           {
-            "time": "2026-11-22T16:00:00+01:00",
+            "time": "2026-11-23T16:00:00+01:00",
             "hour": "16:00",
-            "price_eur_kwh": 0.10011
+            "price_eur_kwh": 0.21969999999999998
           },
           {
-            "time": "2026-11-22T17:00:00+01:00",
+            "time": "2026-11-23T17:00:00+01:00",
             "hour": "17:00",
-            "price_eur_kwh": 0.24412999999999999
+            "price_eur_kwh": 0.28306
           },
           {
-            "time": "2026-11-22T18:00:00+01:00",
+            "time": "2026-11-23T18:00:00+01:00",
             "hour": "18:00",
-            "price_eur_kwh": 0.29991
+            "price_eur_kwh": 0.42575
           },
           {
-            "time": "2026-11-22T19:00:00+01:00",
+            "time": "2026-11-23T19:00:00+01:00",
             "hour": "19:00",
-            "price_eur_kwh": 0.33642
+            "price_eur_kwh": 0.41778
           },
           {
-            "time": "2026-11-22T20:00:00+01:00",
+            "time": "2026-11-23T20:00:00+01:00",
             "hour": "20:00",
-            "price_eur_kwh": 0.32841000000000004
+            "price_eur_kwh": 0.40519
           },
           {
-            "time": "2026-11-22T21:00:00+01:00",
+            "time": "2026-11-23T21:00:00+01:00",
             "hour": "21:00",
-            "price_eur_kwh": 0.30968
+            "price_eur_kwh": 0.37715
           },
           {
-            "time": "2026-11-22T22:00:00+01:00",
+            "time": "2026-11-23T22:00:00+01:00",
             "hour": "22:00",
-            "price_eur_kwh": 0.30198
+            "price_eur_kwh": 0.27864
           },
           {
-            "time": "2026-11-22T23:00:00+01:00",
+            "time": "2026-11-23T23:00:00+01:00",
             "hour": "23:00",
-            "price_eur_kwh": 0.28917000000000004
+            "price_eur_kwh": 0.24580000000000002
           }
         ],
         "source": "Red Eléctrica (ESIOS)",
