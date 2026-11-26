@@ -6,7 +6,7 @@
     "longitude": 2.159,
     "timezone": "Europe/Madrid"
   },
-  "generated_at": "2026-11-26T14:01:43.973693+01:00",
+  "generated_at": "2026-11-26T14:05:21.772050+01:00",
   "sections": {
     "alerts": {
       "status": "ok",
@@ -23,8 +23,8 @@
             "distance": 0.04978206381271066,
             "latitude": 41.429554,
             "longitude": 2.158948,
-            "bikes": 13,
-            "docks": 15,
+            "bikes": 12,
+            "docks": 16,
             "installed": true,
             "renting": true,
             "returning": true
