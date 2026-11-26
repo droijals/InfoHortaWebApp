@@ -108,35 +108,109 @@ async function loadWeather() {
 }
 
 /* =====================================================
-   AVISOS METEOCAT
+   AVISOS METEOROLÒGICS (TEMPSCAT / AEMET)
    ===================================================== */
 
-function renderAlerts(section) {
-  if (failed(section)) return unavailable(section);
+function alertValue(alert, keys) {
+  for (const key of keys) {
+    const value = alert?.[key];
+    if (value !== undefined && value !== null && value !== "") {
+      if (typeof value === "object") {
+        return value.name || value.value || value.text || "";
+      }
+      return String(value);
+    }
+  }
+  return "";
+}
 
-  const alerts = section.data;
+function isCurrentAlert(alert, now = Date.now()) {
+  const start = alertValue(alert, ["start", "starts_at", "onset", "effective", "start_time"]);
+  const end = alertValue(alert, ["end", "ends_at", "expires", "expiry", "end_time"]);
+  const startMs = start ? Date.parse(start) : NaN;
+  const endMs = end ? Date.parse(end) : NaN;
+  if (Number.isFinite(startMs) && startMs > now) return false;
+  if (Number.isFinite(endMs) && endMs < now) return false;
+  return true;
+}
 
-  if (!Array.isArray(alerts) || !alerts.length) {
+function formatAlertDate(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat("ca-ES", {
+    day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit",
+    timeZone: "Europe/Madrid"
+  }).format(date);
+}
+
+function renderAlerts(warnings) {
+  const current = Array.isArray(warnings)
+    ? warnings.filter(alert => isCurrentAlert(alert))
+    : [];
+
+  if (!current.length) {
     return `
       <div class="alert-item">
-        <strong>Sense avisos detectats</strong>
-        <span class="muted">
-          La consulta no retorna avisos per al Barcelonès.
-        </span>
+        <strong>Sense avisos meteorològics vigents</strong>
+        <span class="muted">No consten avisos actius per a Barcelona.</span>
       </div>
+      <p class="source">Font: AEMET · Dades consultades a TempsCat.</p>
     `;
   }
 
-  return alerts.map(a => `
-    <div class="alert-item">
-      <strong>${esc(a.meteor || "Avís meteorològic")}</strong>
-      <span class="muted">
-        ${esc(a.type || "")} · Nivell ${esc(a.danger ?? "—")}
-        <br>
-        ${esc(a.start || "")} — ${esc(a.end || "")}
-      </span>
-    </div>
-  `).join("");
+  const items = current.map(alert => {
+    const title = alertValue(alert, [
+      "headline", "event", "title", "phenomenon", "meteor", "name", "phenomen"
+    ]) || "Avís meteorològic";
+    const level = alertValue(alert, ["level", "severity", "color", "danger", "nivel"]);
+    const area = alertValue(alert, ["area", "areaDesc", "zone", "region", "comarca", "location"]);
+    const start = alertValue(alert, ["start", "starts_at", "onset", "effective", "start_time"]);
+    const end = alertValue(alert, ["end", "ends_at", "expires", "expiry", "end_time"]);
+    const description = alertValue(alert, [
+      "description", "text", "summary", "instruction", "desc"
+    ]);
+
+    const details = [
+      level ? "Nivell " + level : "",
+      area,
+      start || end ? [formatAlertDate(start), formatAlertDate(end)].filter(Boolean).join(" — ") : ""
+    ].filter(Boolean).join(" · ");
+
+    return `
+      <div class="alert-item">
+        <strong>${esc(title)}</strong>
+        ${details ? `<span class="muted">${esc(details)}</span>` : ""}
+        ${description ? `<span class="muted">${esc(description)}</span>` : ""}
+      </div>
+    `;
+  }).join("");
+
+  return items + '<p class="source">Font: AEMET · Dades consultades a <a href="https://tempscat.cat/avisos" target="_blank" rel="noopener">TempsCat</a> (CC BY 4.0).</p>';
+}
+
+async function loadAlerts() {
+  const content = $("alerts");
+  if (!content) return;
+
+  content.innerHTML = '<p class="muted">Consultant els avisos meteorològics…</p>';
+
+  try {
+    const data = await fetchJsonNoCache(
+      "https://tempscat.cat/api/lloc/barcelones/barcelona"
+    );
+
+    if (!data || !Array.isArray(data.warnings)) {
+      throw new Error("La resposta de TempsCat no conté una llista d'avisos vàlida.");
+    }
+
+    content.innerHTML = renderAlerts(data.warnings);
+  } catch (error) {
+    content.innerHTML = `
+      <p class="muted">No s'han pogut actualitzar els avisos meteorològics: ${esc(error.message)}</p>
+      <p class="source">Font consultada: <a href="https://tempscat.cat/avisos" target="_blank" rel="noopener">TempsCat · Avisos oficials</a>.</p>
+    `;
+  }
 }
 
 /* =====================================================
@@ -240,7 +314,6 @@ function renderElectricity(section) {
    ===================================================== */
 
 const renderers = {
-  alerts: renderAlerts,
   bicing: renderBicing,
   electricity: renderElectricity
 };
@@ -473,3 +546,4 @@ document.querySelectorAll('.panel-reload[data-section="bicing"]').forEach(button
 
 loadDashboard();
 loadWeather();
+loadAlerts();
