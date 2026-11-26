@@ -314,7 +314,6 @@ function renderElectricity(section) {
    ===================================================== */
 
 const renderers = {
-  bicing: renderBicing,
   electricity: renderElectricity
 };
 
@@ -545,5 +544,6 @@ document.querySelectorAll('.panel-reload[data-section="bicing"]').forEach(button
    ===================================================== */
 
 loadDashboard();
+loadBicing();
 loadWeather();
 loadAlerts();
